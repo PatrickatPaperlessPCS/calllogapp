@@ -35,6 +35,9 @@ div {
   &.field, &.actions {
     margin-bottom: 10px;
   }
+  .newform {
+    width: 100%;
+  }
 }
 
 #notice {
@@ -71,3 +74,4 @@ div {
     list-style: square;
   }
 }
+

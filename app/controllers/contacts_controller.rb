@@ -5,10 +5,12 @@ class ContactsController < ApplicationController
   # GET /contacts.json
   def index
     @contacts = Contact.all
+      respond_to do |format|
+        format.html
+        format.xls { send_data @contacts.to_csv(col_sep: "\t") }
+      end
   end
 
-  # GET /contacts/1
-  # GET /contacts/1.json
   def show
   end
 
@@ -28,7 +30,7 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
+        format.html { redirect_to new_contact_path, notice: 'Your check-in has been saved. Thanks!' }
         format.json { render :show, status: :created, location: @contact }
       else
         format.html { render :new }
@@ -69,6 +71,6 @@ class ContactsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contact_params
-      params.require(:contact).permit(:contacttype, :company, :department, :person, :duration, :notes)
+      params.require(:contact).permit(:contacttype, :company, :department, :person, :duration, :notes, :eventdate, :email)
     end
 end

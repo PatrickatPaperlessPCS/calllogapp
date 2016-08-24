@@ -11,30 +11,34 @@
     </div>
   <% end %>
 
-<div class="newform">
+ <div class="form-group">
+    <div class="field">
+    Date:<br>
+    <%= f.date_field :eventdate, :class => 'form-control'  %>
+  </div>
   <div class="field">
     Contact Type<br>
-    <%= f.select :contacttype, [ 'Drop-in', 'Meeting', 'Event', 'Other' ], :prompt => 'Select One' %>
+    <%= f.select :contacttype, [ 'Drop-in', 'Meeting', 'Event', 'Other' ], :prompt => 'Select One', :class => 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :company %><br>
-    <%= f.text_field :company %>
+    <%= f.text_field :company, :class => 'form-control'  %>
   </div>
   <div class="field">
     <%= f.label :department %><br>
-    <%= f.text_field :department %>
+    <%= f.text_field :department, :class => 'form-control'  %>
   </div>
   <div class="field">
     <%= f.label :person %><br>
-    <%= f.text_field :person %>
+    <%= f.text_field :person, :class => 'form-control'  %>
   </div>
   <div class="field">
     <%= f.label :duration %><br>
-    <%= f.number_field :duration, :class => 'text_field', :step => 0.25%>
+    <%= f.number_field :duration, :class => 'text_field form-control', :step => 0.25%>
   </div>
   <div class="field">
     <%= f.label :notes %><br>
-    <%= f.text_area :notes %>
+    <%= f.text_area :notes, :class => 'form-control'  %>
   </div>
   <div class="actions">
     <%= f.submit 'Check in', :class => 'btn btn-success' %>
