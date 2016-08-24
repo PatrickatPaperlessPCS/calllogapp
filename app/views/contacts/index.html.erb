@@ -1,3 +1,4 @@
+<%= render 'header' %>
 <p id="notice"><%= notice %></p>
 
 <h3>Your Marketer Check-ins</h3>
@@ -34,5 +35,5 @@
 
 <br>
 <center>
-<%= link_to "Download in Excel", contacts_path(format: "xls") %>
+<span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span>  <%= link_to "Download in Excel", contacts_path(format: "xls") %>
 </center>

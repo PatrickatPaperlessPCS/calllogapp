@@ -9,3 +9,16 @@
 .padding {
 	padding: 10px;
 }
+
+.navbar-default {
+  background: #1F3A93;
+  background: linear-gradient(top,  #1F3A93,  #4B77BE);
+  background: -ms-linear-gradient(top,  #1F3A93,  #4B77BE);
+  background: -webkit-gradient(linear, left top, left bottom, from(#1F3A93), to(#4B77BE));
+  background: -moz-linear-gradient(top,  #1F3A93,  #4B77BE);
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: white;
+  font-weight: bold;
+}
