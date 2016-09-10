@@ -43,6 +43,7 @@ class ContactsController < ApplicationController
         @contact = Contact.new(contact_params)
         @contact.user_id = current_user.id
         @contact.admin_id = current_user.admin_id
+        @contact.user_name = current_user.name
         respond_to do |format|
           if @contact.save
             format.html { redirect_to new_contact_path, notice: 'Your check-in has been saved. Thanks!' }

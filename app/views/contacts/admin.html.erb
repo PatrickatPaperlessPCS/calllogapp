@@ -1,10 +1,11 @@
 <%= render 'admin_header' %>
 <p id="notice"><%= notice %></p>
-<h3>Your Call Check-ins</h3>
+<h3>Your Company's Check-ins</h3>
 <table class="table table-striped">
   <thead class="padding">
     <tr>
       <th>Date</th>
+      <th>Rep Name</th>
       <th>Contacttype</th>
       <th>Company</th>
       <th>Department</th>
@@ -19,14 +20,13 @@
     <% @contacts.each do |contact| %>
       <tr>
         <td><%= contact.eventdate %></td>
+        <td><%= contact.user_name %></td>
         <td><%= contact.contacttype %></td>
         <td><%= contact.company %></td>
         <td><%= contact.department %></td>
         <td><%= contact.person %></td>
         <td><%= contact.duration %></td>
         <td><%= contact.notes %></td>
-        <td><%= link_to 'Show', contact %></td>
-        <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
       </tr>
     <% end %>
   </tbody>
