@@ -1,0 +1,21 @@
+<div class="padding5">
+<h3>Current Users</h3>
+<table class="table table-striped">
+  <thead class="padding">
+    <tr>
+      <th>User Name</th>
+      <th>Email Address</th>
+      <th>Created on</th>
+   </tr>
+  </thead>
+        <% @users.each do |user| %>
+      <tr>
+      	<td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.created_at.strftime("%B %d, %Y") %></td>
+      </tr>
+<% end %>
+  </tbody>
+</table>
+<hr>
+<h4> Want to add or remove a user?  <%= link_to "Click here to Contact Us", "mailto:patrick@calllogapp.com" %> and we'll get it take care of ASAP!</h4>

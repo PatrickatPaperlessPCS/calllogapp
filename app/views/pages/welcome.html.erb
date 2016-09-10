@@ -1,0 +1,15 @@
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+<div class="welcomecontainer">
+	<%= image_tag "logo-black.png", height: 75 %>
+<h1>Howdy!</h1>
+<p>You're going to need to log in before proceeding - but first, choose your role:</p>
+<%= button_to "I'm a lean mean rep machine - a trained quota killer!", new_user_session_path, :class => 'btn btn-large btn-info', :method => :get  %>  <br>
+or
+</br><br>
+<%= button_to "I'm the Administrator for my Company", new_admin_session_path, :class => 'btn btn-large btn-primary', :method => :get  %> 
+</div>

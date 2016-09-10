@@ -1,22 +1,36 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, :except => [:admin, :new]
+  before_action :authenticate_admin!, :only => :admin
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.all
-      respond_to do |format|
-        format.html
-        format.xls { send_data @contacts.to_csv(col_sep: "\t") }
-      end
+          @contacts = current_user.contacts.order(:eventdate)
+            respond_to do |format|
+              format.html
+              format.xls { send_data @contacts.to_csv(col_sep: "\t") }
+     end
   end
+
+  def admin
+          @contacts = current_admin.contacts
+            respond_to do |format|
+              format.html
+              format.xls { send_data @contacts.to_csv(col_sep: "\t") }
+          end
+  end
+
 
   def show
   end
 
   # GET /contacts/new
   def new
-    @contact = Contact.new
+    if admin_signed_in? 
+        redirect_to contacts_admin_path
+    else
+        @contact = Contact.new
+    end
   end
 
   # GET /contacts/1/edit
@@ -26,16 +40,17 @@ class ContactsController < ApplicationController
   # POST /contacts
   # POST /contacts.json
   def create
-    @contact = Contact.new(contact_params)
-
-    respond_to do |format|
-      if @contact.save
-        format.html { redirect_to new_contact_path, notice: 'Your check-in has been saved. Thanks!' }
-        format.json { render :show, status: :created, location: @contact }
-      else
-        format.html { render :new }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
-      end
+        @contact = Contact.new(contact_params)
+        @contact.user_id = current_user.id
+        @contact.admin_id = current_user.admin_id
+        respond_to do |format|
+          if @contact.save
+            format.html { redirect_to new_contact_path, notice: 'Your check-in has been saved. Thanks!' }
+            format.json { render :show, status: :created, location: @contact }
+          else
+            format.html { render :new }
+            format.json { render json: @contact.errors, status: :unprocessable_entity }
+          end
     end
   end
 

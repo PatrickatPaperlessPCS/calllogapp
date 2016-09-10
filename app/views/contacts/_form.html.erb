@@ -1,3 +1,8 @@
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
 <%= form_for(@contact) do |f| %>
   <% if @contact.errors.any? %>
     <div id="error_explanation">
@@ -14,31 +19,31 @@
  <div class="form-group">
     <div class="field">
     Date:<br>
-    <%= f.date_field :eventdate, :class => 'form-control'  %>
+    <%= f.date_field :eventdate %>
   </div>
   <div class="field">
     Contact Type<br>
-    <%= f.select :contacttype, [ 'Drop-in', 'Meeting', 'Event', 'Other' ], :prompt => 'Select One', :class => 'form-control' %>
+    <%= f.select :contacttype, [ 'Phone Call', 'Drop-in', 'Meeting', 'Event', 'Other' ], :prompt => 'Select One', :class => 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :company %><br>
-    <%= f.text_field :company, :class => 'form-control'  %>
+    <%= f.text_field :company %>
   </div>
   <div class="field">
     <%= f.label :department %><br>
-    <%= f.text_field :department, :class => 'form-control'  %>
+    <%= f.text_field :department  %>
   </div>
   <div class="field">
     <%= f.label :person %><br>
-    <%= f.text_field :person, :class => 'form-control'  %>
+    <%= f.text_field :person %>
   </div>
   <div class="field">
-    <%= f.label :duration %><br>
-    <%= f.number_field :duration, :class => 'text_field form-control', :step => 0.25%>
+    <strong>Meeting Length: </strong><i>(in minutes)</i><br>
+    <%= f.number_field :duration %>
   </div>
   <div class="field">
     <%= f.label :notes %><br>
-    <%= f.text_area :notes, :class => 'form-control'  %>
+    <%= f.text_area :notes %>
   </div>
     <div class="actions">
     <strong>Notify my supervisor: <%= f.check_box :email %></strong>

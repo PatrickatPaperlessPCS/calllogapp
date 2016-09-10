@@ -9,4 +9,6 @@ def self.to_csv(options = {})
   end
 end
 
+	has_one :user
+	has_one :admin
 end
