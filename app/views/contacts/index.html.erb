@@ -25,7 +25,6 @@
         <td><%= contact.person %></td>
         <td><%= contact.duration %></td>
         <td><%= contact.notes %></td>
-        <td><%= contact.admin_email %></td>
         <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
         <td><%= link_to 'Delete Record', contact, method: :delete, data: { confirm: 'Are you sure you want to delete this Check-in?' } %></td>
       </tr>

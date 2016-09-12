@@ -3,7 +3,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <div class="welcomecontainer"><h2>Log in</h2>
+  <div class="welcomecontainer">
+      <%= image_tag "logo-black.png", height: 75 %>
+      <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
