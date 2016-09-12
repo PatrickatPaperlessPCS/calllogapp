@@ -13,7 +13,7 @@ class ContactsController < ApplicationController
   end
 
   def admin
-          @contacts = current_admin.contacts
+          @contacts = current_admin.contacts.order(:eventdate)
             respond_to do |format|
               format.html
               format.xls { send_data @contacts.to_csv(col_sep: "\t") }
