@@ -44,14 +44,20 @@ class ContactsController < ApplicationController
         @contact.user_id = current_user.id
         @contact.admin_id = current_user.admin_id
         @contact.user_name = current_user.name
+        @contact.user_email = current_user.email
         respond_to do |format|
           if @contact.save
+            if @contact.email = "true"
+            ContactsMailer.email(@contact).deliver_later
+            end
             format.html { redirect_to new_contact_path, notice: 'Your check-in has been saved. Thanks!' }
             format.json { render :show, status: :created, location: @contact }
+
           else
             format.html { render :new }
             format.json { render json: @contact.errors, status: :unprocessable_entity }
           end
+
     end
   end
 
@@ -87,6 +93,6 @@ class ContactsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contact_params
-      params.require(:contact).permit(:contacttype, :company, :department, :person, :duration, :notes, :eventdate, :email)
+      params.require(:contact).permit(:contacttype, :company, :department, :person, :duration, :notes, :eventdate, :email, :admin_email)
     end
 end

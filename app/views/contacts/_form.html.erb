@@ -46,7 +46,7 @@
     <%= f.text_area :notes %>
   </div>
     <div class="actions">
-    <strong>Notify my supervisor: <%= f.check_box :email %></strong>
+    <strong><%= f.check_box :email %> Send e-mail notification to: <br> <%= f.email_field :admin_email %></strong>
   </div>
   <div class="actions">
     <%= f.submit 'Check in', :class => 'btn btn-success' %>

@@ -19,14 +19,14 @@
   <tbody class="padding">
     <% @contacts.each do |contact| %>
       <tr>
-        <td><%= contact.eventdate %></td>
+        <td><%= contact.try(:eventdate).try(:strftime, '%B %e, %Y')  %></td>
         <td><%= contact.user_name %></td>
         <td><%= contact.contacttype %></td>
         <td><%= contact.company %></td>
         <td><%= contact.department %></td>
         <td><%= contact.person %></td>
         <td><%= contact.duration %></td>
-        <td><%= contact.notes %></td>
+        <td><%= contact.admin.email %></td>
       </tr>
     <% end %>
   </tbody>
