@@ -18,7 +18,7 @@
 
  <div class="form-group">
     <div class="field">
-    Date:<br>
+    <strong>Date:</strong><br>
     <%= f.date_field :eventdate %>
   </div>
   <div class="field">
@@ -47,6 +47,11 @@
   </div>
     <div class="actions">
     <strong><%= f.check_box :email %> Send e-mail notification to: <br> <%= f.email_field :admin_email %></strong>
+  </div>
+  <div class="field">
+    <strong>Send me a reminder to follow up on:</strong><br>
+    <%= f.date_field :followup_at %><br>
+    <i>(Leave blank if you don't want a reminder)</i>
   </div>
   <div class="actions">
     <%= f.submit 'Check in', :class => 'btn btn-success' %>

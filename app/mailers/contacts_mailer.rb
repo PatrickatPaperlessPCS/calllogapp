@@ -10,4 +10,14 @@ class ContactsMailer < ApplicationMailer
 	)
 	     
 	end
+
+	def reminder(contact)
+		@contact = contact
+	     mail(
+	  :subject => "Call Log App: New Flagged Customer Contact" ,
+	  :to  => @contact.user_email ,
+	  :track_opens => 'true',
+	)
+	    
+	end
 end

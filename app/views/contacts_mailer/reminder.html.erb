@@ -1,0 +1,12 @@
+<%= @contact.user_name %>,
+<br> You'd requested an email reminder to follow up with <%= @contact.person %> at <%= @contact.company %>.  
+<br><br>
+Here's their notes from <%= @contact.try(:eventdate).try(:strftime, '%B %e')%>:<br><br>
+<%= @contact.notes %>
+<hr><center>
+This is an automatic message from CallLogApp.com - to please email <%= @contact.user_name %> at <%= @contact.user_email %>, or just hit reply.
+<br>
+<a href="http://www.calllogapp.com">
+<img src="http://calllogapp.com/wp-content/uploads/2016/09/Call-Log-App-Black.png" alt="CallLogApp.com" height="42" width="219">
+<br><strong>Super simple outside sales & marketing tracking from $25/month</strong></a>
+</center>
