@@ -1,6 +1,6 @@
 
 # Change these
-server 'your_server_ip', port: your_port_num, roles: [:web, :app, :db], primary: true
+server '45.55.78.248', port: 22, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:PatrickatPaperlessPCS/calllogapp.git'
 set :application,     'CallLogApp'
