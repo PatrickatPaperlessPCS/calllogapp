@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: newcrm_production
-  username: newcrm
+  username: calllogapp
   password: <%= ENV['NEWCRM_DATABASE_PASSWORD'] %>
