@@ -28,7 +28,7 @@ gem 'postmark-rails'
 gem 'whenever', :require => false
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem 'rake', '~> 11.2.2'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
