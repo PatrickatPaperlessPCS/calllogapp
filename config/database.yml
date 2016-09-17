@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: newcrm_production
+  database: calllog_production
   username: calllogapp
-  password: <%= ENV['NEWCRM_DATABASE_PASSWORD'] %>
+  password: %Xystilmsi928350
