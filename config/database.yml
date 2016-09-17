@@ -82,4 +82,4 @@ production:
   <<: *default
   database: calllog_production
   username: calllogapp
-  password: %Xystilmsi928350
+  password: <%= ENV['DB_PASSWORD'] %>
