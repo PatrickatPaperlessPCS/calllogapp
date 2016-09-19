@@ -24,4 +24,14 @@ REMINDER_TIME = 1
   def send_reminder
 	ContactsMailer.reminder(self)
   end
+
+  after_create :send_notification_email
+
+  def send_notification_email
+     if self.admin_email.present?
+    ContactsMailer.email(self).deliver_later
+  end
+  end
+
+
 end

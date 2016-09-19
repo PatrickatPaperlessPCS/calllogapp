@@ -24,16 +24,16 @@
         <td><%= contact.department %></td>
         <td><%= contact.person %></td>
         <td><%= contact.duration %></td>
-        <td><%= contact.notes %></td>
+        <td><%= contact.email %></td>
         <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
         <td><%= link_to 'Delete Record', contact, method: :delete, data: { confirm: 'Are you sure you want to delete this Check-in?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
 <center>
+  <%= will_paginate @posts %>
+<br>
 <%= button_to '+ New Check-in', new_contact_path, :class => 'btn btn-large btn-success', :method => :get  %>  
 <br>
 <span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span>  <%= link_to "Download in Excel", contacts_path(format: "xls") %>

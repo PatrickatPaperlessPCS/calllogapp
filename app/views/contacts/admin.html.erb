@@ -34,6 +34,8 @@
 
 <br>
 <center>
+    <%= will_paginate @contacts %>
+
 <br>
 <span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span>  <%= link_to "Download in Excel", contacts_admin_path(format: "xls") %>
 </center>

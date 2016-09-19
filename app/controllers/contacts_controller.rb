@@ -5,7 +5,7 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
-          @contacts = current_user.contacts.order(:eventdate)
+          @contacts = current_user.contacts.order('eventdate DESC').paginate(:page => params[:page], :per_page => 30)
             respond_to do |format|
               format.html
               format.xls { send_data @contacts.to_csv(col_sep: "\t") }
@@ -13,7 +13,7 @@ class ContactsController < ApplicationController
   end
 
   def admin
-          @contacts = current_admin.contacts.order(:eventdate)
+          @contacts = current_admin.contacts.order('eventdate DESC').paginate(:page => params[:page], :per_page => 30)
             respond_to do |format|
               format.html
               format.xls { send_data @contacts.to_csv(col_sep: "\t") }
@@ -47,12 +47,8 @@ class ContactsController < ApplicationController
         @contact.user_email = current_user.email
         respond_to do |format|
           if @contact.save
-            if @contact.email = "true"
-            ContactsMailer.email(@contact).deliver_later
-            end
             format.html { redirect_to new_contact_path, notice: 'Your check-in has been saved. Thanks!' }
             format.json { render :show, status: :created, location: @contact }
-
           else
             format.html { render :new }
             format.json { render json: @contact.errors, status: :unprocessable_entity }
