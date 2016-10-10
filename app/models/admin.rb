@@ -6,4 +6,5 @@ class Admin < ActiveRecord::Base
 
    has_many :contacts
    has_many :users
+   belongs_to :host
 end

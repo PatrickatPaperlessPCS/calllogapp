@@ -5,5 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
    has_many :contacts
-   belongs_to :admin
+   belongs_to :company
 end

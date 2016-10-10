@@ -13,7 +13,7 @@ class ContactsController < ApplicationController
   end
 
   def admin
-          @contacts = current_admin.contacts.order('eventdate DESC').paginate(:page => params[:page], :per_page => 30)
+          @contacts = current_admin.host.contacts.order('eventdate DESC').paginate(:page => params[:page], :per_page => 30)
             respond_to do |format|
               format.html
               format.xls { send_data @contacts.to_csv(col_sep: "\t") }
@@ -42,7 +42,7 @@ class ContactsController < ApplicationController
   def create
         @contact = Contact.new(contact_params)
         @contact.user_id = current_user.id
-        @contact.admin_id = current_user.admin_id
+        @contact.host_id = current_user.host_id
         @contact.user_name = current_user.name
         @contact.user_email = current_user.email
         respond_to do |format|

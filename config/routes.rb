@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :hosts
   get 'admin/useradmin'
 
   devise_for :admins
