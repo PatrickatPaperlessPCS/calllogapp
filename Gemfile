@@ -30,6 +30,7 @@ gem 'whenever', :require => false
 # gem 'bcrypt', '~> 3.1.7'
 gem 'rake', '~> 11.2.2'
 gem 'will_paginate', '~> 3.1.0'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
