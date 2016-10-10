@@ -14,7 +14,7 @@ class ContactsController < ApplicationController
   end
 
   def admin
-          @contacts = current_admin.host.contacts.order('eventdate DESC').paginate(:page => params[:page], :per_page => 30)
+          @contacts = current_admin.contacts.order('eventdate DESC').paginate(:page => params[:page], :per_page => 30)
             respond_to do |format|
               format.html
               format.xls { send_data @contacts.to_csv(col_sep: "\t") }
