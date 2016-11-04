@@ -1,14 +1,14 @@
 <%= render 'header' %>
 <%= render 'admin_tab_partial' %>
 <h4>Last Month's visits:</4>
-<%= bar_chart Contact.in_last_month.group(:company).count %>
+<%= bar_chart @contacts.group(:company).count %>
 <p id="notice"><%= notice %></p>
 <h4>Last Month's check-ins:</h4>
 <table class="table table-striped">
   <thead class="padding">
     <tr>
       <th>Date</th>
-      <th>Contacttype</th>
+      <th>Contact Type</th>
       <th>Company</th>
       <th>Department</th>
       <th>Person</th>

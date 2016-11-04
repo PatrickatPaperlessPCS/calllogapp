@@ -1,14 +1,14 @@
 <%= render 'header' %>
 <%= render 'tab_partial' %>
 <h4>So far this year:</4>
-<%= bar_chart Contact.this_year.group(:company).count %>
+<%= bar_chart @contacts.group(:company).count %>
 <p id="notice"><%= notice %></p>
 <h4>Your latest check-ins:</h4>
 <table class="table table-striped">
   <thead class="padding">
     <tr>
       <th>Date</th>
-      <th>Contacttype</th>
+      <th>Contact Type</th>
       <th>Company</th>
       <th>Department</th>
       <th>Person</th>

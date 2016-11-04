@@ -5,7 +5,7 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
-          @contacts = current_user.contacts.order('eventdate DESC').paginate(:page => params[:page], :per_page => 10)
+          @contacts = current_user.contacts.order('eventdate DESC').paginate(:page => params[:page], :per_page => 30)
             respond_to do |format|
               format.html
               format.xls { send_data @contacts.to_csv(col_sep: "\t") }
@@ -13,15 +13,17 @@ class ContactsController < ApplicationController
   end
 
   def last_month
-            @contacts = current_user.contacts.in_last_month.paginate(:page => params[:page], :per_page => 10)
+            @contacts = current_user.contacts.in_last_month.paginate(:page => params[:page], :per_page => 10).order('eventdate DESC')
             respond_to do |format|
               format.html
               format.xls { send_data @contacts.to_csv(col_sep: "\t") }
+
+
      end
   end
 
   def this_month
-            @contacts = current_user.contacts.this_month.paginate(:page => params[:page], :per_page => 10)
+            @contacts = current_user.contacts.this_month.paginate(:page => params[:page], :per_page => 10).order('eventdate DESC')
             respond_to do |format|
               format.html
               format.xls { send_data @contacts.to_csv(col_sep: "\t") }
@@ -29,7 +31,7 @@ class ContactsController < ApplicationController
   end
 
   def this_year
-            @contacts = current_user.contacts.this_year.paginate(:page => params[:page], :per_page => 10)
+            @contacts = current_user.contacts.this_year.paginate(:page => params[:page], :per_page => 10).order('eventdate DESC')
             respond_to do |format|
               format.html
               format.xls { send_data @contacts.to_csv(col_sep: "\t") }
@@ -38,7 +40,7 @@ class ContactsController < ApplicationController
 
 
   def admin
-          @contacts = current_admin.contacts.order('eventdate DESC').paginate(:page => params[:page], :per_page => 10)
+          @contacts = current_admin.contacts.order('eventdate DESC').paginate(:page => params[:page], :per_page => 30)
             respond_to do |format|
               format.html
               format.xls { send_data @contacts.to_csv(col_sep: "\t") }
@@ -46,27 +48,35 @@ class ContactsController < ApplicationController
   end
 
   def admin_last_month
-          @contacts = current_admin.contacts.in_last_month.paginate(:page => params[:page], :per_page => 10)
+          @contacts = current_admin.contacts.in_last_month.paginate(:page => params[:page], :per_page => 10).order('eventdate DESC')
             respond_to do |format|
               format.html
               format.xls { send_data @contacts.to_csv(col_sep: "\t") }
           end
+
+            @admin_contacts = current_admin
+            @admin_contacts.contacts.in_last_month
+
   end
 
     def admin_this_month
-          @contacts = current_admin.contacts.this_month.paginate(:page => params[:page], :per_page => 10)
+          @contacts = current_admin.contacts.this_month.paginate(:page => params[:page], :per_page => 10).order('eventdate DESC')
             respond_to do |format|
               format.html
               format.xls { send_data @contacts.to_csv(col_sep: "\t") }
           end
+            @admin_contacts = current_admin
+            @admin_contacts.contacts.this_month
   end
 
     def admin_this_year
-          @contacts = current_admin.contacts.this_year.paginate(:page => params[:page], :per_page => 10)
+          @contacts = current_admin.contacts.this_year.paginate(:page => params[:page], :per_page => 10).order('eventdate DESC')
             respond_to do |format|
               format.html
               format.xls { send_data @contacts.to_csv(col_sep: "\t") }
           end
+            @admin_contacts = current_admin
+            @admin_contacts.contacts.this_year          
   end
 
 

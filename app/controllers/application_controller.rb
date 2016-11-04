@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     before_filter :configure_permitted_parameters, if: :devise_controller?
 
 def after_sign_in_path_for(admin)
-  contacts_admin_path
+  contacts_admin_this_month_path
 end
 
 def after_sign_in_path_for(user)

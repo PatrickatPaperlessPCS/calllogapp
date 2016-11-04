@@ -12,9 +12,9 @@ end
 	belongs_to :user
 	has_one :host
 
-scope :in_last_month, lambda { where("contacts.created_at > ? AND contacts.created_at < ?", Time.now.beginning_of_month - 1.month, Time.now.end_of_month - 1.month) }
-scope :this_month, lambda { where("contacts.created_at > ? AND contacts.created_at < ?", Time.now.beginning_of_month, Time.now.end_of_month) }
-scope :this_year, lambda { where("contacts.created_at > ? AND contacts.created_at < ?", Time.now.beginning_of_year, Time.now) }
+scope :in_last_month, lambda { where("contacts.eventdate > ? AND contacts.eventdate < ?", Time.now.beginning_of_month - 1.month, Time.now.end_of_month - 1.month) }
+scope :this_month, lambda { where("contacts.eventdate > ? AND contacts.eventdate < ?", Time.now.beginning_of_month, Time.now.end_of_month) }
+scope :this_year, lambda { where("contacts.eventdate > ? AND contacts.eventdate < ?", Time.now.beginning_of_year, Time.now) }
 
 REMINDER_TIME = 1
 

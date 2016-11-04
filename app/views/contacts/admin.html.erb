@@ -1,7 +1,6 @@
 <%= render 'header' %>
 <%= render 'admin_tab_partial' %>
 <h4> All Logged activity </h4>
-<%= bar_chart Contact.group(:company).count, discrete: true %>
 <p id="notice"><%= notice %></p>
 <h4>Your latest check-ins</h4>
 <table class="table table-striped">
