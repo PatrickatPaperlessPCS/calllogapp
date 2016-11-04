@@ -1,0 +1,6 @@
+<ul class="tabrow">
+<%= link_to_unless_current("This Month", contacts_this_month_path, :class => 'tabpartial')  %> 
+<%= link_to_unless_current("Last Month", contacts_last_month_path, :class => 'tabpartial') %>
+<%= link_to_unless_current("This Year", contacts_this_year_path, :class => 'tabpartial') %>
+<%= link_to_unless_current("All Records", contacts_path, :class => 'tabpartial') %>
+</ul>

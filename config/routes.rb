@@ -5,7 +5,17 @@ Rails.application.routes.draw do
   devise_for :admins
   get 'pages/welcome'
 
+
+  get '/contacts/last_month' => 'contacts#last_month'
+  get '/contacts/this_month' => 'contacts#this_month'
+  get '/contacts/this_year' => 'contacts#this_year'
+
   get '/contacts/admin' => 'contacts#admin'
+  get '/contacts/admin_last_month' => 'contacts#admin_last_month'
+  get '/contacts/admin_this_month' => 'contacts#admin_this_month'
+  get '/contacts/admin_this_year' => 'contacts#admin_this_year'
+
+
 
   devise_for :users
   resources :contacts

@@ -1,9 +1,9 @@
 <%= render 'header' %>
 <%= render 'tab_partial' %>
-<h4> All Logged activity </h4>
-<%= bar_chart Contact.group(:company).count, discrete: true %>
+<h4>So far this month:</4>
+<%= bar_chart Contact.this_month.group(:company).count %>
 <p id="notice"><%= notice %></p>
-<h4>Your latest check-ins</h4>
+<h4>Your latest check-ins:</h4>
 <table class="table table-striped">
   <thead class="padding">
     <tr>

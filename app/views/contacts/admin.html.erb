@@ -1,11 +1,13 @@
-<%= render 'admin_header' %>
+<%= render 'header' %>
+<%= render 'admin_tab_partial' %>
+<h4> All Logged activity </h4>
+<%= bar_chart Contact.group(:company).count, discrete: true %>
 <p id="notice"><%= notice %></p>
-<h3>Your Company's Check-ins</h3>
+<h4>Your latest check-ins</h4>
 <table class="table table-striped">
   <thead class="padding">
     <tr>
       <th>Date</th>
-      <th>Rep Name</th>
       <th>Contacttype</th>
       <th>Company</th>
       <th>Department</th>
@@ -19,23 +21,21 @@
   <tbody class="padding">
     <% @contacts.each do |contact| %>
       <tr>
-        <td><%= contact.try(:eventdate).try(:strftime, '%B %e, %Y')  %></td>
-        <td><%= contact.user_name %></td>
+        <td><%= contact.try(:eventdate).try(:strftime, '%B %e, %Y') %></td>
         <td><%= contact.contacttype %></td>
         <td><%= contact.company %></td>
         <td><%= contact.department %></td>
         <td><%= contact.person %></td>
         <td><%= contact.duration %></td>
         <td><%= contact.notes %></td>
+        <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
+        <td><%= link_to 'Delete Record', contact, method: :delete, data: { confirm: 'Are you sure you want to delete this Check-in?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
 <center>
-    <%= will_paginate @contacts %>
+  <%= will_paginate @contacts %>
 
-<br>
-<span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span>  <%= link_to "Download in Excel", contacts_admin_path(format: "xls") %>
+<span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span>  <%= link_to "Download in Excel", contacts_path(format: "xls") %>
 </center>

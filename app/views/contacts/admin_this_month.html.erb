@@ -1,9 +1,9 @@
 <%= render 'header' %>
-<%= render 'tab_partial' %>
-<h4> All Logged activity </h4>
-<%= bar_chart Contact.group(:company).count, discrete: true %>
+<%= render 'admin_tab_partial' %>
+<h4>So far this month:</4>
+<%= bar_chart Contact.this_month.group(:company).count %>
 <p id="notice"><%= notice %></p>
-<h4>Your latest check-ins</h4>
+<h4>Your latest check-ins:</h4>
 <table class="table table-striped">
   <thead class="padding">
     <tr>
@@ -36,8 +36,6 @@
 </table>
 <center>
   <%= will_paginate @contacts %>
-<br>
-<%= button_to '+ New Check-in', new_contact_path, :class => 'btn btn-large btn-success', :method => :get  %>  
-<br>
+
 <span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span>  <%= link_to "Download in Excel", contacts_path(format: "xls") %>
 </center>
